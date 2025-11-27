@@ -1,20 +1,14 @@
 <header>
   <nav class="nav">
-    <a class="logo" routerLink="/">
-      <span>Mini Dashboard</span>
-    </a>
     <ul class="nav-links">
-      <li>Home</li>
-      <li>About</li>
+      <li><a routerLink="/">Dashboard</a></li>
+      <li><a routerLink="/profile">Profil</a></li>
+      <li><a routerLink="/tasks">Tâches journalières</a></li>
+      <li><a routerLink="/productivity">Productivité</a></li>
     </ul>
+    <button (click)="toggleTheme()">Thème</button>
   </nav>
 </header>
 <main class="main">
-  <div class="content">
-    <h1>{{ title() }}</h1>
-    <p>Congratulations! Your app is running</p>
-    <button (click)="toggleTheme()">Thème</button>
-  </div>
+  <router-outlet />
 </main>
-
-<router-outlet />

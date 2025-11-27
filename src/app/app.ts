@@ -8,5 +8,14 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('mini-dashboard');
+  protected readonly title = signal('Mini dashboard');
+  
+  toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    document.documentElement.setAttribute(
+      'data-theme',
+      current === 'light' ? 'dark' : 'light'
+    );
+  }
+
 }

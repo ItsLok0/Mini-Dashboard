@@ -6,6 +6,9 @@
   --text: light-dark(#3C424B, #EEF2F0);
   --selected-bg: light-dark(#DEE4ED, #0E0F14);
 
+  --red-text: light-dark(#b30000, #ffcccc);
+  --red-bg: light-dark(#ffe6e6, #4d0000);
+
   &[data-theme='dark'] {
     color-scheme: dark;
   }

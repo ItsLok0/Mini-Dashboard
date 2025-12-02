@@ -1,13 +1,12 @@
-/* Thème clair */
-html {
-  --main-color: #63BDB5;
-  --bg: #282828;
-  --text: #eef2f0;
-}
+:root {
+  color-scheme: light;
 
-/* Thème sombre */
-[data-theme="light"] {
-  --main-color: #15696F;
-  --bg: #eef2f0;
-  --text: #282828;
+  --main-color: light-dark(#ffffff, #181B23);
+  --bg: light-dark(#F5F5F5, #000000);
+  --text: light-dark(#3C424B, #EEF2F0);
+  --selected-bg: light-dark(#DEE4ED, #0E0F14);
+
+  &[data-theme='dark'] {
+    color-scheme: dark;
+  }
 }

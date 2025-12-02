@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet, Router } from '@angular/router';
+import { ThemeSwitcherComponent } from "./theme-switcher/theme-switcher";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',
-  imports: [RouterLink, RouterOutlet]
+  imports: [RouterLink, RouterOutlet, ThemeSwitcherComponent]
 })
-export class App {
-  toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme');
-    document.documentElement.setAttribute(
-      'data-theme',
-      current === 'light' ? 'dark' : 'light'
-    );
-  }
 
+export class App {
+  constructor(private router: Router) {}
+
+  isActive(path: string) {
+    return this.router.url === path;
+  }
 }

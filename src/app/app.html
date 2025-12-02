@@ -1,13 +1,25 @@
 <header>
+  <h1>Dashboard</h1>
   <nav class="nav">
     <ul class="nav-links">
-      <li><a routerLink="/">Dashboard</a></li>
-      <li><a routerLink="/profile">Profil</a></li>
-      <li><a routerLink="/tasks">Tâches journalières</a></li>
-      <li><a routerLink="/productivity">Productivité</a></li>
+      <li [class.active]="isActive('/')">
+        <a routerLink="/">Accueil</a>
+      </li>
+      <li [class.active]="isActive('/tasks')">
+        <a routerLink="/tasks">Tâches journalières</a>
+      </li>
+      <li [class.active]="isActive('/productivity')">
+        <a routerLink="/productivity">Productivité</a>
+      </li>
+      <li [class.active]="isActive('/crypto')">
+        <a routerLink="/crypto">Crypto</a>
+      </li>
+      <li [class.active]="isActive('/weather')">
+        <a routerLink="/weather">Météo</a>
+      </li>
     </ul>
-    <button (click)="toggleTheme()">Thème</button>
   </nav>
+  <app-theme-switcher></app-theme-switcher>
 </header>
 <main class="main">
   <router-outlet />

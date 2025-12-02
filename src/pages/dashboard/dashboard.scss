@@ -11,10 +11,9 @@
         grid-auto-rows: 80px auto auto;
 
         div {
-            border: 2px solid var(--main-color);
             border-radius: 1rem;
-            background-color: #1c1c1c;
-            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.384);
+            background-color: var(--main-color);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             padding: 1rem;
         }
 

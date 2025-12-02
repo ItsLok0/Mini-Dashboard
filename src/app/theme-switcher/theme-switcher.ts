@@ -24,6 +24,7 @@ export class ThemeSwitcherComponent implements OnInit {
 
   protected readonly currentTheme = signal<Theme>('light');
 
+  // Vérification d'être sur le navigateur
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {

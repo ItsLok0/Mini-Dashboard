@@ -31,6 +31,10 @@
       background-color: lightgray;
       border-radius: 24px;
 
+      &:hover {
+        background-color: dimgray;
+      }
+
       &::before {
         position: absolute;
         content: "";
@@ -69,6 +73,10 @@
 
     .checkbox:checked + .slider {
       background-color: dimgray;
+
+      &:hover {
+        background-color: lightgrey;
+      }
     }
 
     .checkbox:checked + .slider:before {
@@ -78,5 +86,11 @@
     .checkbox:focus + .slider {
       outline: 2px solid var(--text);
     }
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  :host {
+    flex: none;
   }
 }

@@ -6,7 +6,7 @@
       [checked]="currentTheme() === 'dark'"
       role="switch"
       [attr.aria-checked]="currentTheme() === 'dark'"
-      [attr.aria-labelledby]="'theme-label'"
+      [attr.aria-label]="currentTheme() === 'dark' ? 'Mode sombre activé' : 'Mode clair activé'"
       >
     <span class="slider" aria-hidden="true">
       <span class="icon sun" [class.visible]="currentTheme() === 'light'">
@@ -21,7 +21,4 @@
       </span>
     </span>
   </label>
-  <span id="theme-label" class="theme-label" aria-hidden="true">
-    {{ currentTheme() === 'dark' ? 'Mode sombre activé' : 'Mode clair activé' }}
-  </span>
 </div>

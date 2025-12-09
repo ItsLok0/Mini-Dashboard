@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterLink, RouterOutlet, Router } from '@angular/router';
 import { ThemeSwitcherComponent } from "./theme-switcher/theme-switcher";
 
@@ -32,5 +32,10 @@ export class App {
       this.isMenuOpen = false;
       nav.classList.remove('open');
     }
+  }
+
+  @HostListener('window:keydown.esc', ['$event'])
+  handleKeyDown(event: Event) {
+    this.closeMenu();
   }
 }

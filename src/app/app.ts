@@ -12,7 +12,25 @@ import { ThemeSwitcherComponent } from "./theme-switcher/theme-switcher";
 export class App {
   constructor(private router: Router) {}
 
+  isMenuOpen = false;
+
   isActive(path: string) {
     return this.router.url === path;
+  }
+
+  toggleMenu() {
+    const nav = document.querySelector('nav');
+    if (nav) {
+      this.isMenuOpen = true;
+      nav.classList.toggle('open');
+    }
+  }
+
+  closeMenu() {
+    const nav = document.querySelector('nav');
+    if (nav && this.isMenuOpen) {
+      this.isMenuOpen = false;
+      nav.classList.remove('open');
+    }
   }
 }

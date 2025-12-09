@@ -15,6 +15,7 @@
         background-color: var(--main-color);
         box-sizing: border-box;
         flex-direction: column;
+        box-shadow: 0 0 15px light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2));
 
         nav {
             display: flex;
@@ -22,13 +23,18 @@
             flex: 1;
 
             .logo {
+                width: 100%;
                 display: flex;
-                align-items: flex-end;
                 padding: 2rem 1rem 3rem 1rem;
+                box-sizing: border-box;
 
                 .menu-burger {
                     display: none;
-
+                    cursor: pointer;
+                    
+                    &:focus {
+                        outline: 2px solid var(--text);
+                    }
                     
                     svg {
                         display: block;
@@ -41,16 +47,6 @@
                 .logo-title {
                     width: 100%;
                     text-decoration: none;
-                }
-            }
-
-            &.open {
-                .nav-links {
-                    display: block;
-                }
-
-                .profil {
-                    display: flex;
                 }
             }
         }
@@ -158,6 +154,10 @@
                     transition: all 0.3s ease;
                 }
 
+                &:focus {
+                    outline: 2px solid var(--text);
+                }
+
                 svg {
                     width: 16px;
                     height: 16px;
@@ -185,8 +185,6 @@
 
             nav {
                 flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
 
                 .logo {
                     padding: 1rem;
@@ -200,8 +198,36 @@
                     display: none;
                 }
 
+                .switcher {
+                    display: none;
+                }
+
                 .profil {
                     display: none;
+                }
+
+                &.open {
+                    height: 100%;
+                    flex-direction: column;
+                    position: absolute;
+                    z-index: 10;
+                    width: 100%;
+                    background-color: var(--main-color);
+
+                    .nav-links {
+                        display: block;
+                        margin-top: 5rem;
+                    }
+
+                    .switcher {
+                        display: block;
+                        margin-top: 2rem;
+                    }
+
+                    .profil {
+                        margin-top: 2rem;
+                        display: flex;
+                    }
                 }
             }
         }

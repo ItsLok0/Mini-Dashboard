@@ -1,0 +1,12 @@
+@if (weather()) {
+    <div class="weather">
+        <h3>{{ weather().name }}</h3>
+        <div class="info">
+            <div class="logo">
+                <img src="img/logo/{{ weather().weather[0].icon }}.png" class="weather-icon header" alt="" aria-hidden="true">
+                <p>{{ weather().weather[0].description }}</p>
+            </div>
+            <div class="temp">{{ weather().main.temp }}°C</div>
+        </div>
+    </div>
+}

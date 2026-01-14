@@ -9,6 +9,7 @@ import { Dashboard } from '../pages/dashboard/dashboard';
 import { Profile } from '../pages/profile/profile';
 import { DailyTasks } from '../pages/daily-tasks/daily-tasks';
 import { Weather } from '../pages/weather/weather';
+import { WeatherDashboard } from '../pages/dashboard/weather-dashboard/weather-dashboard';
 
 @NgModule({
   declarations: [],
@@ -21,6 +22,7 @@ import { Weather } from '../pages/weather/weather';
     DailyTasks,
     Weather,
     Dashboard,
+    WeatherDashboard,
     App
   ],
   providers: []

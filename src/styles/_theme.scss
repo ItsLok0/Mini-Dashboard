@@ -1,0 +1,19 @@
+:root {
+  color-scheme: light;
+
+  --main-color: light-dark(#ffffff, #181B23);
+  --bg: light-dark(#F5F5F5, #000000);
+  --text: light-dark(#3C424B, #EEF2F0);
+  --selected-bg: light-dark(#DEE4ED, #0E0F14);
+
+  --red-text: light-dark(#b30000, #ffcccc);
+  --red-bg: light-dark(#ffe6e6, #4d0000);
+
+  --text-placeholder: light-dark(#999999, #666666);
+  --hover-bg: light-dark(#f8f9ff, #1a1d25);
+  --box-shadow: 0 0 15px light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2));
+
+  &[data-theme='dark'] {
+    color-scheme: dark;
+  }
+}

@@ -1,12 +1,41 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, HostListener } from '@angular/core';
+import { RouterLink, RouterOutlet, Router } from '@angular/router';
+import { ThemeSwitcherComponent } from "./theme-switcher/theme-switcher";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
+  imports: [RouterLink, RouterOutlet, ThemeSwitcherComponent]
 })
+
 export class App {
-  protected readonly title = signal('mini-dashboard');
+  constructor(private router: Router) {}
+
+  isMenuOpen = false;
+
+  isActive(path: string) {
+    return this.router.url === path;
+  }
+
+  toggleMenu() {
+    const nav = document.querySelector('nav');
+    if (nav) {
+      this.isMenuOpen = true;
+      nav.classList.toggle('open');
+    }
+  }
+
+  closeMenu() {
+    const nav = document.querySelector('nav');
+    if (nav && this.isMenuOpen) {
+      this.isMenuOpen = false;
+      nav.classList.remove('open');
+    }
+  }
+
+  @HostListener('window:keydown.esc', ['$event'])
+  handleKeyDown(event: Event) {
+    this.closeMenu();
+  }
 }

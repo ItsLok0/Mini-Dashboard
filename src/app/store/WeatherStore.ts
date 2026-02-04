@@ -11,6 +11,7 @@ export class WeatherStore {
   constructor(private http: HttpClient) {}
 
   initWeather() {
+    if (typeof window === 'undefined') return;
     const savedCity = localStorage.getItem('weather_city') as string;
 
     if (savedCity) {

@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app.routes';
 
 import { App } from './app';
 import { Dashboard } from '../pages/dashboard/dashboard';
-import { Profile } from '../pages/profile/profile';
 import { DailyTasks } from '../pages/daily-tasks/daily-tasks';
 import { Weather } from '../pages/weather/weather';
 import { WeatherDashboard } from '../pages/dashboard/weather-dashboard/weather-dashboard';
@@ -18,7 +17,6 @@ import { WeatherDashboard } from '../pages/dashboard/weather-dashboard/weather-d
     FormsModule,
     AppRoutingModule,
     RouterModule,
-    Profile,
     DailyTasks,
     Weather,
     Dashboard,

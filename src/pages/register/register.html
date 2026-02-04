@@ -1,0 +1,104 @@
+<div class="form register">
+  <div class="content">
+    <h2>Créer un compte</h2>
+    @if (registerError) {
+      <div class="error-div" tabindex="-1" #errorDiv>
+        <p class="error-msg" id="registerError" role="alert">{{ errorMessage }}</p>
+      </div>
+    }
+    <p aria-hidden="true" class="form-instruction">
+      Tous les champs sont obligatoires
+    </p>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <label for="lastName">Nom de famille</label>
+      <input
+        type="text"
+        id="lastName"
+        formControlName="lastName"
+        autocomplete="family-name"
+        aria-required="true"
+        [attr.aria-invalid]="registerForm.get('lastName')?.invalid && submitted"
+        [attr.aria-describedby]="(submitted && registerForm.get('lastName')?.invalid) ? 'registerErrorLastName' : null"
+        [ngClass]="{ 'input-error': registerForm.get('lastName')?.invalid && submitted }">
+      @if (registerForm.get('lastName')?.hasError('required') && submitted) {
+      <div class="error">
+        <ul class="error-msg" id="registerErrorLastName" role="alert">
+          <li>Le nom de famille est obligatoire.</li>
+        </ul>
+      </div>
+      }
+
+      <label for="firstName">Prénom</label>
+      <input
+        type="text"
+        id="firstName"
+        formControlName="firstName"
+        autocomplete="given-name"
+        aria-required="true"
+        [attr.aria-invalid]="registerForm.get('firstName')?.invalid && submitted"
+        [attr.aria-describedby]="(submitted && registerForm.get('firstName')?.invalid) ? 'registerErrorFirstName' : null"
+        [ngClass]="{ 'input-error': registerForm.get('firstName')?.invalid && submitted }">
+      @if (registerForm.get('firstName')?.hasError('required') && submitted) {
+      <div class="error">
+        <ul class="error-msg" id="registerErrorFirstName" role="alert">
+          <li>Le prénom est obligatoire.</li>
+        </ul>
+      </div>
+      }
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        aria-required="true"
+        autocomplete="email"
+        [attr.aria-invalid]="registerForm.get('email')?.invalid && submitted"
+        [attr.aria-describedby]="(submitted && registerForm.get('email')?.invalid) ? 'registerErrorEmail' : null"
+        [ngClass]="{ 'input-error': registerForm.get('email')?.invalid && submitted }">
+      @if (registerForm.get('email')?.invalid && submitted) {
+      <div class="error">
+        <ul class="error-msg" id="registerErrorEmail" role="alert">
+          @if (registerForm.get('email')?.hasError('required')) {
+          <li>L'email est obligatoire.</li>
+          }
+          @if (registerForm.get('email')?.hasError('email')) {
+          <li>L'email n'est pas valide (ex: nom@domaine.fr).</li>
+          }
+        </ul>
+      </div>
+      }
+
+      <label for="password">Mot de passe</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        aria-required="true"
+        autocomplete="new-password"
+        [attr.aria-invalid]="registerForm.get('password')?.invalid && submitted"
+        [attr.aria-describedby]="(submitted && registerForm.get('password')?.invalid) ? 'registerErrorPassword' : 'passwordHint'"
+        [ngClass]="{ 'input-error': registerForm.get('password')?.invalid && submitted }">
+      @if (registerForm.get('password')?.invalid && submitted) {
+      <div class="error">
+        <ul class="error-msg" id="registerErrorPassword" role="alert">
+          @if (registerForm.get('password')?.hasError('required')) {
+          <li>Le mot de passe est obligatoire.</li>
+          }
+          @if (registerForm.get('password')?.hasError('minlength')) {
+          <li>Il faut au moins 12 caractères.</li>
+          }
+          @if (registerForm.get('password')?.hasError('pattern')) {
+          <li>Il faut une majuscule, une minuscule et un chiffre.</li>
+          }
+        </ul>
+      </div>
+      }
+    
+      <button type="submit">S'inscrire</button>
+    </form>
+    <div class="link">
+      <p>Déjà un compte ? <a href="/login">Se connecter</a></p>
+    </div>
+  </div>
+</div>

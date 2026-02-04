@@ -1,0 +1,108 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  .content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--main-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 1rem;
+    width: 790px;
+    max-width: 100%;
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .error-div {
+    background-color: var(--red-bg);
+    border-radius: 5px;
+    padding: 0.5rem;
+
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+
+  .form-instruction {
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input {
+      margin-bottom: 1.5rem;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      background-color: var(--main-color);
+      box-shadow: var(--box-shadow);
+
+      &:focus,
+      &:focus-visible {
+        outline: none;
+        outline: 2px solid var(--blue-btn-bg);
+      }
+    }
+
+    button {
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: none;
+      background-color: var(--blue-btn-bg);
+      font-size: 1rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--blue-btn-hover-bg);
+      }
+    }
+
+    input.ng-invalid.ng-touched.input-error {
+      border: 2px solid var(--red-text);
+    }
+  }
+
+  .error-msg {
+    color: var(--red-text);
+    margin: -1rem 0 1rem 0;
+  }
+
+  .link {
+    margin-top: 1.5rem;
+    text-align: center;
+
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

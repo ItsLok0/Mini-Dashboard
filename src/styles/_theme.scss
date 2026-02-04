@@ -9,9 +9,15 @@
   --red-text: light-dark(#b30000, #ffcccc);
   --red-bg: light-dark(#ffe6e6, #4d0000);
 
+  --focus-outline: light-dark(#4d90fe, #8ab4f8);
+  --blue-btn-bg: light-dark(#357ae8, #185abc);
+  --blue-btn-hover-bg: light-dark(#2a65d0, #234194);
+
+  --link-color: light-dark(#1a0dab, #8ab4f8);
   --text-placeholder: light-dark(#999999, #666666);
+
   --hover-bg: light-dark(#f8f9ff, #1a1d25);
-  --box-shadow: 0 0 15px light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2));
+  --box-shadow: 0px 0px 15px light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
 
   &[data-theme='dark'] {
     color-scheme: dark;

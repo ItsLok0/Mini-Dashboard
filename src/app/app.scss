@@ -15,8 +15,12 @@
         background-color: var(--main-color);
         box-sizing: border-box;
         flex-direction: column;
-        box-shadow: 0 0 15px light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2));
+        box-shadow: var(--box-shadow);
 
+        &.hide {
+            display: none;
+        }
+            
         nav {
             display: flex;
             flex-direction: column;
@@ -88,7 +92,7 @@
             padding: 1rem;
             bottom: 0;
             gap: 10px;
-            box-shadow: 0 0 15px light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2));
+            box-shadow: var(--box-shadow);
             border-radius: 10px;
 
             .info {
@@ -99,13 +103,7 @@
                 border: none;
                 padding: .5rem;
                 margin: 0;
-                text-decoration: none;
                 box-sizing: border-box;
-                cursor: pointer;
-
-                &:hover {
-                    text-decoration: underline;
-                }
 
                 .text {
                     display: flex;

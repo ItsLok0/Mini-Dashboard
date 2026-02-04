@@ -1,0 +1,62 @@
+<div class="form login">
+  <div class="content">
+    <h2>Connexion</h2>
+    @if (loginError) {
+      <div class="error-div" tabindex="-1" #errorDiv>
+        <p class="error-msg" id="loginError" role="alert">{{ errorMessage }}</p>
+      </div>
+    }
+    <p aria-hidden="true" class="form-instruction">
+      Tous les champs sont obligatoires
+    </p>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        autocomplete="email"
+        aria-required="true"
+        [attr.aria-invalid]="loginForm.get('email')?.invalid && submitted"
+        [attr.aria-describedby]="(submitted && loginForm.get('email')?.invalid) ? 'loginErrorEmail' : null"
+        [ngClass]="{ 'input-error': loginForm.get('email')?.invalid && submitted }">
+      @if (loginForm.get('email')?.invalid && submitted) {
+      <div class="error">
+        <ul class="error-msg" id="loginErrorEmail" role="alert">
+          @if (loginForm.get('email')?.hasError('required')) {
+          <li>L'email est obligatoire.</li>
+          }
+          @if (loginForm.get('email')?.hasError('email')) {
+          <li>Le format de l'email n'est pas valide.</li>
+          }
+        </ul>
+      </div>
+      }
+
+      <label for="password">Mot de passe</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        autocomplete="current-password"
+        aria-required="true"
+        [attr.aria-invalid]="loginForm.get('password')?.invalid && submitted"
+        [attr.aria-describedby]="(submitted && loginForm.get('password')?.invalid) ? 'loginErrorPassword' : null"
+        [ngClass]="{ 'input-error': loginForm.get('password')?.invalid && submitted }">
+      @if (submitted && loginForm.get('password')?.invalid) {
+      <div class="error">
+        <ul class="error-msg" id="loginErrorPassword" role="alert">
+          @if (loginForm.get('password')?.hasError('required')) {
+          <li>Le mot de passe est obligatoire.</li>
+          }
+        </ul>
+      </div>
+      }
+
+      <button type="submit">Se connecter</button>
+    </form>
+    <div class="link">
+      <p>Pas encore de compte ? <a href="/register">Créer un compte</a></p>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,10 @@
 @import 'styles/theme';
 @import 'styles/form';
 
+*{
+  box-sizing: border-box;
+}
+
 html, body { 
   height: 100%;
 }

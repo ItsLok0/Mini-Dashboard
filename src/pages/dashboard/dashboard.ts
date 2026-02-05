@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { WeatherStore } from '../../app/store/WeatherStore';
 import { WeatherDashboard } from "./weather-dashboard/weather-dashboard";
+import { DailyQuote } from "./daily-quote/daily-quote";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [WeatherDashboard],
+  imports: [WeatherDashboard, DailyQuote],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss', 
 })

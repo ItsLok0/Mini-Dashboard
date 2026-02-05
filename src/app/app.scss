@@ -2,15 +2,15 @@
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
         "Segoe UI Symbol";
-    box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
     display: flex;
-    min-height: 100vh;
+    height: 100dvh;
 
     header {
         display: flex;
+        flex-shrink: 0;
         width: 225px;
         background-color: var(--main-color);
         box-sizing: border-box;
@@ -167,19 +167,18 @@
     }
 
     main {
+        display: flex;
         flex: 1;
-        padding: 1rem;
     }
 }
 
 @media screen and (max-width: 1350px) {
     :host {
         flex-direction: column;
-        width: 100%;
-        height: 100%;
 
         header {
             width: 100%;
+            height: auto;
 
             nav {
                 flex-direction: row;

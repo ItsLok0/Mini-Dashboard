@@ -1,13 +1,12 @@
 <div class="content">
-    <div class="profile">
-        <h2>{{ title }}</h2>
-    </div>
-    <div class="weather">
-        <app-weather-dashboard
-            [weather]="weatherStore.weatherData()">
-        </app-weather-dashboard>
-    </div>
-    <div class="dailytasks"></div>
-    <div class="crypto"></div>
-    <div class="productivity"></div>
+  <section class="weather">
+    <app-weather-dashboard [weather]="weatherStore.weatherData()">
+    </app-weather-dashboard>
+  </section>
+  <section class="quote">
+    <app-daily-quote></app-daily-quote>
+  </section>
+  <section class="crypto"></section>
+  <section class="dailytasks"></section>
+  <section class="productivity"></section>
 </div>

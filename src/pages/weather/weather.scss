@@ -1,4 +1,10 @@
+:host {
+  flex: 1;
+}
+
 .contentWeather {
+  padding: 1.5rem;
+
   .form {
     width: 100%;
     position: relative;
@@ -74,6 +80,10 @@
         color: var(--text);
         font-size: 48px;
         margin-bottom: 15px;
+
+        @media (max-width: 4000px) {
+          font-size: 2rem;
+        }
       }
 
       .info {
@@ -137,7 +147,11 @@
         .heure {
           font-weight: 600;
           color: var(--primary-color);
-          min-width: 80px;
+          width: 80px;
+
+          @media (max-width: 4000px) {
+            width: 45px;
+          }
         }
 
         .temp {

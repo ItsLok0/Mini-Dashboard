@@ -15,7 +15,7 @@
 
     // Desktop layout
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 285px));
     grid-template-areas:
       "weather weather crypto crypto crypto crypto"
       "quote quote crypto crypto crypto crypto"
@@ -24,7 +24,7 @@
     // Tablet et mobile layout
     @media (max-width: 900px) {
       grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(6, minmax(0, 1fr));
+      grid-template-rows: repeat(6, minmax(0, 173px));
       grid-template-areas:
         "weather weather quote quote"
         "crypto crypto crypto crypto"
@@ -35,16 +35,17 @@
         ;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 700px) {
       grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(6, minmax(0, 1fr));
-      grid-template-areas: "weather weather quote quote"
-      "crypto crypto crypto crypto"
-      "crypto crypto crypto crypto"
-      "crypto crypto crypto crypto"
-      "dailytasks dailytasks dailytasks dailytasks"
-      "productivity productivity productivity productivity"
-      ;
+      grid-template-rows: repeat(6, minmax(0, 173px));
+      grid-template-areas: 
+        "weather weather quote quote"
+        "crypto crypto crypto crypto"
+        "crypto crypto crypto crypto"
+        "crypto crypto crypto crypto"
+        "dailytasks dailytasks dailytasks dailytasks"
+        "productivity productivity productivity productivity"
+        ;
     }
 
     section {
@@ -53,7 +54,7 @@
       box-shadow: var(--box-shadow);
       padding: 1.5rem;
 
-      @media (max-width: 900px) {
+      @media (max-width: 700px) {
         padding: 0.5rem;
       }
 

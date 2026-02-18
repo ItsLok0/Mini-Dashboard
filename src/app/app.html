@@ -12,24 +12,24 @@
     </div>
     <ul class="nav-links item-burger">
       <li [class.active]="isActive('/')">
-        <a routerLink="/" (click)="closeMenu()" title="Accueil">Accueil</a>
+        <a routerLink="/" (click)="toggleMenu()" title="Accueil">Accueil</a>
       </li>
       <li [class.active]="isActive('/tasks')">
-        <a routerLink="/tasks" (click)="closeMenu()" title="Tâches journalières">Tâches journalières</a>
+        <a routerLink="/tasks" (click)="toggleMenu()" title="Tâches journalières">Tâches journalières</a>
       </li>
       <li [class.active]="isActive('/productivity')">
-        <a routerLink="/productivity" (click)="closeMenu()" title="Productivité">Productivité</a>
+        <a routerLink="/productivity" (click)="toggleMenu()" title="Productivité">Productivité</a>
       </li>
       <li [class.active]="isActive('/crypto')">
-        <a routerLink="/crypto" (click)="closeMenu()" title="Crypto">Crypto</a>
+        <a routerLink="/crypto" (click)="toggleMenu()" title="Crypto">Crypto</a>
       </li>
       <li [class.active]="isActive('/weather')">
-        <a routerLink="/weather" (click)="closeMenu()" title="Météo">Météo</a>
+        <a routerLink="/weather" (click)="toggleMenu()" title="Météo">Météo</a>
       </li>
     </ul>
     <app-theme-switcher class="switcher"></app-theme-switcher>
     <div class="profil bg-color">
-        <div class="info" (click)="closeMenu()" aria-label="Accéder à votre profil">
+        <div class="info" (click)="toggleMenu()" aria-label="Accéder à votre profil">
           <div class="text" aria-hidden="true">
             @if (authService.userData$ | async; as user) {
               <span class="name">{{ user.lastName }}</span>

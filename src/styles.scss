@@ -1,5 +1,12 @@
 @import 'styles/theme';
 @import 'styles/form';
+@import 'styles/list';
+
+@property --i {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
 
 *{
   box-sizing: border-box;
@@ -15,6 +22,13 @@ body {
   box-sizing: border-box;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  &.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+  }
 }
 
 button {
@@ -24,6 +38,18 @@ button {
 }
 
 h1, h2, h3, .logo-title {
+  margin: 0;
+}
+
+h2 {
+  font-size: 2rem;
+
+  @media (max-width: 900px) {
+    font-size: 1rem;
+  }
+}
+
+p {
   margin: 0;
 }
 

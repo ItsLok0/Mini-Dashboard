@@ -4,10 +4,10 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  gap: 0.5rem;
 
   h2 {
     margin-bottom: 0.5rem;
-    font-size: 2rem;
   }
 
   p.author {
@@ -17,16 +17,13 @@
 
   @media (max-width: 900px) {
     h2 {
+      margin: 0;
       font-size: 1rem;
     }
     
     p {
       margin: 0;
       font-size: .7rem;
-
-      &.author {
-        margin-top: .4rem;
-      }
     }
   }
 }

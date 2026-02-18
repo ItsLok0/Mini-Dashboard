@@ -3,8 +3,6 @@ import { RouterLink, RouterOutlet, Router } from '@angular/router';
 import { ThemeSwitcherComponent } from "./theme-switcher/theme-switcher";
 import { AuthService } from './services/auth';
 import { CommonModule } from '@angular/common';
-import { onAuthStateChanged } from 'firebase/auth';
-import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -25,23 +23,18 @@ export class App {
 
   toggleMenu() {
     const nav = document.querySelector('nav');
-    if (nav) {
-      this.isMenuOpen = true;
-      nav.classList.toggle('open');
-    }
-  }
+    const body = document.body;
 
-  closeMenu() {
-    const nav = document.querySelector('nav');
-    if (nav && this.isMenuOpen) {
-      this.isMenuOpen = false;
-      nav.classList.remove('open');
+    if (nav) {
+      this.isMenuOpen = !this.isMenuOpen;
+      nav.classList.toggle('open');
+      body.classList.toggle('no-scroll');
     }
   }
 
   @HostListener('window:keydown.esc', ['$event'])
   handleKeyDown(event: Event) {
-    this.closeMenu();
+    this.toggleMenu();
   }
 
   logout() {

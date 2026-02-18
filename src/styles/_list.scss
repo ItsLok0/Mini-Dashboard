@@ -1,0 +1,64 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 60%;
+  gap: 0.7rem;
+  padding: .5rem 0 0 0;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--daily-tasks-main);
+    border-radius: 10px;
+  }
+
+  .task {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    input[type="checkbox"] {
+      appearance: none;
+      background-color: none;
+      margin: 0;
+      font: inherit;
+      border: 0.1em solid var(--text);
+      border-radius: 0.15em;
+      transform: translateY(-0.075em);
+      display: grid;
+      place-content: center;
+
+      &::before {
+        content: "";
+        width: 0.7em;
+        height: 0.7em;
+        transform: scale(0);
+        box-shadow: inset 1em 1em var(--daily-tasks-main);
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      }
+
+      &:checked {
+        &::before {
+          transform: scale(1);
+        }
+      }
+    }
+
+    label {
+      width: 100%;
+
+      @media (max-width: 900px) {
+        font-size: 0.8rem;
+      }
+
+      &.done {
+        text-decoration: line-through;
+        color: var(--daily-tasks-main);
+      }
+    }
+  }
+}

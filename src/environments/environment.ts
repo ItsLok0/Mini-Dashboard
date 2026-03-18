@@ -1,11 +1,11 @@
 export const environment = {
-    production: false,
-    firebase: {
-      apiKey: "TON_API_KEY",
-      authDomain: "TON_AUTH_DOMAIN",
-      projectId: "TON_PROJECT_ID",
-      storageBucket: "TON_STORAGE_BUCKET",
-      messagingSenderId: "TON_SENDER_ID",
-      appId: "TON_APP_ID"
-    }
-  };
+  production: false,
+  firebase: {
+    apiKey: import.meta.env.NG_APP_FIREBASE_API_KEY,
+    authDomain: import.meta.env.NG_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.NG_APP_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.NG_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.NG_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.NG_APP_FIREBASE_APP_ID
+  }
+};

@@ -1,11 +1,11 @@
 export const environment = {
-  production: false,
+  production: true,
   firebase: {
-    apiKey: import.meta.env.NG_APP_FIREBASE_API_KEY,
-    authDomain: import.meta.env.NG_APP_FIREBASE_AUTH_DOMAIN,
-    projectId: import.meta.env.NG_APP_FIREBASE_PROJECT_ID,
-    storageBucket: import.meta.env.NG_APP_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: import.meta.env.NG_APP_FIREBASE_MESSAGING_SENDER_ID,
-    appId: import.meta.env.NG_APP_FIREBASE_APP_ID,
+    apiKey: "AIzaSyD49ZWqwGiSnu4UJwzpwQJtXyY-jDQ-jf8",
+    authDomain: "dashboard-b2ce2.firebaseapp.com",
+    projectId: "dashboard-b2ce2",
+    storageBucket: "dashboard-b2ce2.firebasestorage.app",
+    messagingSenderId: "317806461863",
+    appId: "1:317806461863:web:690da5233aa14794ccec82",
   },
 };

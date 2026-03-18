@@ -1,11 +1,11 @@
 export const environment = {
-  production: true,
+  production: false,
   firebase: {
-    apiKey: "AIzaSyD49ZWqwGiSnu4UJwzpwQJtXyY-jDQ-jf8",
-    authDomain: "dashboard-b2ce2.firebaseapp.com",
-    projectId: "dashboard-b2ce2",
-    storageBucket: "dashboard-b2ce2.firebasestorage.app",
-    messagingSenderId: "317806461863",
-    appId: "1:317806461863:web:690da5233aa14794ccec82",
-  },
+    apiKey: "API_KEY",
+    authDomain: "AUTH_DOMAIN",
+    projectId: "PROJECT_ID",
+    storageBucket: "STORAGE_BUCKET",
+    messagingSenderId: "MESSAGING_SENDER_ID",
+    appId: "APP_ID"
+  }
 };

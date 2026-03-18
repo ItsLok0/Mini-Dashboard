@@ -1,1 +1,42 @@
-<p>daily-tasks works!</p>
+<div class="contentTasks">
+  <section class="form">
+    <h2>Ajouter une nouvelle tâche</h2>
+    <form (submit)="tasksStore.onAddTask(taskInput.value); taskInput.value = ''">
+      <div class="input">
+        <label for="taskInput" class="sr-only">Ajouter une tâche</label>
+        <input #taskInput id="taskInput" type="text" required />
+      </div>
+      <button type="submit">Ajouter</button>
+    </form>
+  </section>
+  <section class="advancement">
+    @if (tasks$ | async; as tasks) {
+      <h2>Progression des tâches</h2>
+      <div class="circle" [style.--i]="tasksStore.getPercentage(tasks)">
+        <span>{{ tasksStore.getPercentage(tasks) }}%</span>
+        </div>
+    } @else { 
+      <h2>Aucune tâche</h2>
+      <div class="circle" [style.--i]="0">
+        <span>0%</span>
+      </div> 
+      <p>Ajouter une première tâche pour voir la progression</p>
+    }
+  </section>
+  <section class="taskList">
+    <h2>Mes tâches en cours</h2>
+    <div class="list">
+      @if (tasks$ | async; as tasks) {
+        @for (task of tasks; track task.id) {
+          <div class="task">
+            <input type="checkbox" [id]="task.id" [checked]="task.completed"
+              (change)="tasksStore.toggleTaskCompletion(task.id, task.completed)" />
+            <label [for]="task.id" [class.done]="task.completed">{{ task.title }}</label>
+          </div>
+        } @empty {
+          <p>Aucune tâche pour aujourd'hui.</p>
+        }
+      }
+    </div>
+  </section>
+</div>

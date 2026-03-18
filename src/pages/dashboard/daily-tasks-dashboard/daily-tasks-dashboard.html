@@ -1,0 +1,24 @@
+<div class="dailyTasks">
+  <h2>Tâches journalières</h2>
+  <div class="content">
+    <div class="tasks list">
+      @if (tasks$ | async; as tasks) {
+        @for (task of tasks; track task.id) {
+          <div class="task">
+            <input type="checkbox" [id]="task.id" [checked]="task.completed" (change)="tasksStore.toggleTaskCompletion(task.id, task.completed)"/>
+            <label [for]="task.id" [class.done]="task.completed">{{ task.title }}</label>
+          </div>
+        } @empty {
+          <p>Aucune tâche pour aujourd'hui.</p>
+        }
+      }
+    </div>
+    <div class="advancement">
+      @if (tasks$ | async; as tasks) {
+        <div class="circle" [style.--i]="tasksStore.getPercentage(tasks)">
+          <span>{{ tasksStore.getPercentage(tasks) }}%</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

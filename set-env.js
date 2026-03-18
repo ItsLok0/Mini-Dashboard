@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const targetPath = path.join(__dirname, './src/environments/environment.prod.ts');
+const targetPath = path.join(__dirname, './src/environments/environment.ts');
 
 const envConfigFile = `export const environment = {
   production: true,
@@ -16,6 +16,6 @@ const envConfigFile = `export const environment = {
 };
 `;
 
-console.log('--- Generation du fichier environment.prod.ts ---');
+console.log('--- Generation du fichier environment.ts ---');
 fs.writeFileSync(targetPath, envConfigFile);
 console.log('--- Variables injectées avec succès ---');

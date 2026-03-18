@@ -32,7 +32,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "server": null,
+            "server": false,
             "ssr": false,
             "prerender": false
           },

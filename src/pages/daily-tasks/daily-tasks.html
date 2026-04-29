@@ -1,7 +1,7 @@
 <div class="contentTasks">
   <section class="form">
     <h2>Ajouter une nouvelle tâche</h2>
-    <form (submit)="tasksStore.onAddTask(taskInput.value); taskInput.value = ''">
+    <form (submit)="this.tasksStore.onAddTask(taskInput.value.trim()); taskInput.value = ''; $event.preventDefault()">
       <div class="input">
         <label for="taskInput" class="sr-only">Ajouter une tâche</label>
         <input #taskInput id="taskInput" type="text" required />
@@ -13,8 +13,8 @@
     @if (tasks$ | async; as tasks) {
       <h2>Progression des tâches</h2>
       <div class="circle" [style.--i]="tasksStore.getPercentage(tasks)">
-        <span>{{ tasksStore.getPercentage(tasks) }}%</span>
-        </div>
+         <span>{{ tasksStore.getPercentage(tasks) }}%</span>
+      </div>
     } @else { 
       <h2>Aucune tâche</h2>
       <div class="circle" [style.--i]="0">

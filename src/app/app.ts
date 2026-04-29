@@ -41,6 +41,5 @@ export class App {
     this.authService.logout().then(() => {
       this.router.navigate(['/login']);
     });
-    console.log('Déconnexion');
   }
 }

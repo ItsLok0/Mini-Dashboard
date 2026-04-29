@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component, ElementRef, inject, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef, Component, ElementRef, inject, ViewChild, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormBuilder, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../app/services/auth';
@@ -22,6 +22,7 @@ export class Login {
   private router = inject(Router);
   private fb = inject(FormBuilder);
   private cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private platformId = inject(PLATFORM_ID);
 
   // Définition du formulaire avec ses contraintes
   loginForm = this.fb.group({
@@ -78,6 +79,13 @@ export class Login {
           }  
         }, 0);
       });
+    }
+  }
+
+  onGuestLogin(event: Event) {
+    event.preventDefault();
+    if (isPlatformBrowser(this.platformId)) {
+      this.authService.loginAsGuest();
     }
   }
 }

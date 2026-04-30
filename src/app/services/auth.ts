@@ -1,7 +1,8 @@
 import { Injectable, inject } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, user, User } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInAnonymously, signInWithEmailAndPassword, signOut, user, User } from '@angular/fire/auth';
 import { Observable, of, switchMap } from 'rxjs';
 import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
 export class AuthService {
   private auth: Auth = inject(Auth);
   private firestore: Firestore = inject(Firestore);
-
+  private router: Router = inject(Router);
   // Observable pour savoir si l'ut est connecté ou non
   user$: Observable<User | null> = user(this.auth);
 
@@ -49,8 +50,36 @@ export class AuthService {
     return userCredential.user;
   }
 
+  async loginAsGuest() {
+    try {
+      const result = await signInAnonymously(this.auth);
+      const userData = {
+        uid: result.user.uid,
+        email: result.user.email,
+        firstName: 'Invité',
+        lastName: 'Invité',
+        createdAt: new Date()
+      };
+      const userDocRef = doc(this.firestore, `users`, result.user.uid);
+      await setDoc(userDocRef, userData);
+      await this.router.navigate(['/dashboard']);
+    } catch (error) {
+      console.error('Erreur de connexion invité:', error);
+      throw error;
+    }
+  }
+
   // Déconnexion de l'utilisateur
   logout(): Promise<void> {
+    if (this.auth.currentUser?.isAnonymous) {
+      //SUppression de l'utilisateur si c'est un compte invité (éviter surchage en BDD)
+      return this.auth.currentUser.delete().then(() => {
+        return signOut(this.auth);
+      }).catch((error) => {
+        console.error(error);
+        return;
+      });
+    }
     return signOut(this.auth);
   }
 }

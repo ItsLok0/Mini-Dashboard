@@ -93,12 +93,16 @@
   .link {
     margin-top: 1.5rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
-    a {
+    a, .btn-link {
       color: var(--link-color);
       text-decoration: none;
       font-weight: bold;
       cursor: pointer;
+      font-size: inherit;
 
       &:hover {
         text-decoration: underline;

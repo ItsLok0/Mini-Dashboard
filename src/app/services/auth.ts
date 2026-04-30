@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInAnonymously, signInWithEmailAndPassword, signOut, user, User } from '@angular/fire/auth';
 import { Observable, of, switchMap } from 'rxjs';
-import { Firestore, doc, docData, setDoc } from '@angular/fire/firestore';
+import { Firestore, deleteDoc, doc, docData, setDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -70,16 +70,29 @@ export class AuthService {
   }
 
   // Déconnexion de l'utilisateur
-  logout(): Promise<void> {
-    if (this.auth.currentUser?.isAnonymous) {
-      //SUppression de l'utilisateur si c'est un compte invité (éviter surchage en BDD)
-      return this.auth.currentUser.delete().then(() => {
-        return signOut(this.auth);
-      }).catch((error) => {
-        console.error(error);
+  async logout(): Promise<void> {
+    const user = this.auth.currentUser;
+
+    if (user?.isAnonymous) {
+      try {
+        const uid = user.uid;
+
+        // Supprimer les données Firestore
+        const userDocRef = doc(this.firestore, 'users', uid);
+        await deleteDoc(userDocRef);
+
+        // Supprimer les données Auth
+        await user.delete();
+        
         return;
-      });
+      } catch (error) {
+        console.error("Erreur lors de la suppression de l'invité :", error);
+        // Déconnexion même si la suppression échoue
+        return signOut(this.auth);
+      }
     }
+
+    // Cas utilisateur non anonyme
     return signOut(this.auth);
   }
 }

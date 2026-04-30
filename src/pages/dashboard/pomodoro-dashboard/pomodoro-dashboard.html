@@ -1,0 +1,65 @@
+<div class="pomodoro">
+  <div class="header">
+    <h2>Pomodoro</h2>
+    <div class="mode" role="tablist" aria-label="Mode Pomodoro">
+      @for (m of modes; track m.key) {
+        <button
+          type="button"
+          class="mode-btn"
+          role="tab"
+          [attr.aria-selected]="pomodoro.mode() === m.key"
+          [class.active]="pomodoro.mode() === m.key"
+          [disabled]="pomodoro.running()"
+          (click)="pomodoro.setMode(m.key)"
+        >
+          {{ m.label }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="timer" aria-live="polite" aria-atomic="true">
+    <span class="time">{{ pomodoro.formatTime(pomodoro.remainingSec()) }}</span>
+  </div>
+
+  <div class="label">
+    <label class="sr-only" for="pomodoroLabel">Tâche (optionnel)</label>
+    <input
+      id="pomodoroLabel"
+      type="text"
+      [disabled]="pomodoro.running()"
+      [ngModel]="pomodoro.label()"
+      (ngModelChange)="pomodoro.setLabel($event)"
+      placeholder="Tâche (optionnel)"
+      autocomplete="off"
+      maxlength="80"
+    />
+  </div>
+
+  <div class="actions" role="group" aria-label="Actions Pomodoro">
+    @if (!pomodoro.running()) {
+      <button type="button" class="primary" (click)="pomodoro.start()">
+        Démarrer
+      </button>
+    } @else {
+      <button type="button" class="primary" (click)="pomodoro.pause()">
+        Pause
+      </button>
+    }
+
+    <button type="button" class="secondary" (click)="pomodoro.stop()">
+      Stop
+    </button>
+
+    <button type="button" class="secondary" (click)="pomodoro.skip()">
+      Terminer
+    </button>
+  </div>
+
+  <div class="footer">
+    <p class="meta">
+      Séries focus: <strong>{{ pomodoro.focusCountSinceLongBreak() }}</strong>
+    </p>
+  </div>
+</div>
+

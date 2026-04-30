@@ -1,0 +1,146 @@
+.pomodoro {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .mode {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .mode-btn {
+      padding: 0.5rem 0.75rem;
+      border-radius: 10px;
+      box-shadow: var(--box-shadow);
+      background-color: var(--main-color);
+      color: var(--text);
+      border: 1px solid transparent;
+
+      &:hover:not(:disabled) {
+        background-color: var(--hover-bg);
+      }
+
+      &:focus,
+      &:focus-visible {
+        outline: none;
+        outline: 2px solid var(--focus-outline);
+      }
+
+      &.active {
+        border-color: var(--daily-tasks-main);
+        font-weight: 700;
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .time {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: var(--daily-tasks-main);
+
+      @media (max-width: 900px) {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .label {
+    display: flex;
+    justify-content: center;
+
+    input {
+      width: min(420px, 100%);
+      padding: 0.5rem;
+      border: none;
+      border-radius: 10px;
+      background-color: var(--main-color);
+      box-shadow: var(--box-shadow);
+      color: var(--text);
+
+      &::placeholder {
+        color: var(--text-placeholder);
+      }
+
+      &:focus,
+      &:focus-visible {
+        outline: none;
+        outline: 2px solid var(--focus-outline);
+      }
+
+      &:disabled {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+
+    button {
+      padding: 0.6rem 0.9rem;
+      border-radius: 10px;
+      font-weight: 700;
+      box-shadow: var(--box-shadow);
+    }
+
+    .primary {
+      background-color: var(--blue-btn-bg);
+      color: white;
+
+      &:hover {
+        background-color: var(--blue-btn-hover-bg);
+      }
+    }
+
+    .secondary {
+      background-color: var(--selected-bg);
+      color: var(--text);
+
+      &:hover {
+        background-color: var(--hover-bg);
+      }
+    }
+
+    button:focus,
+    button:focus-visible {
+      outline: none;
+      outline: 2px solid var(--focus-outline);
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+
+    .meta {
+      color: var(--text-secondary, var(--text));
+      opacity: 0.9;
+      font-size: 0.9rem;
+    }
+  }
+}
+
